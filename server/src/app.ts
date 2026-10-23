@@ -26,8 +26,18 @@ export async function buildApp(opts: BuildOpts = {}): Promise<FastifyInstance> {
   const now = opts.now ?? Date.now;
   const db = opts.db ?? openDb(cfg.dbPath);
 
+  // Di belakang Caddy prefix sudah dilepas (handle_path). Saat dijalankan langsung (`npm start`),
+  // terima juga URL berawalan PUBLIC_BASE supaya http://127.0.0.1:3100/nyebrang/ bisa dibuka.
+  const base = cfg.publicBase.endsWith("/") ? cfg.publicBase : `${cfg.publicBase}/`;
   const app = Fastify({
+    rewriteUrl: (req) => {
+      const url = req.url ?? "/";
+      if (base !== "/" && url.startsWith(base)) return url.slice(base.length - 1);
+      return url;
+    },
     logger: opts.logger ?? false,
+    // jangan catat setiap request (berisi IP pemain) ke journal; IP hanya disimpan sebagai hash di DB
+    disableRequestLogging: true,
     trustProxy: "127.0.0.1",   // hanya percaya X-Forwarded-For dari Caddy lokal
     bodyLimit: 64 * 1024,
   });

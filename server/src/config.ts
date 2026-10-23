@@ -34,7 +34,7 @@ export function loadConfig(overrides: Partial<Config> = {}): Config {
     publicOrigin: env("PUBLIC_ORIGIN", "http://localhost:5173"),
     publicBase: env("PUBLIC_BASE", "/nyebrang/"),
     clientDist: env("CLIENT_DIST", path.resolve(here, here.includes(`${path.sep}dist${path.sep}`) ? "../../../../client/dist" : "../../client/dist")),
-    version: env("APP_VERSION", "1.0.0"),
+    version: env("APP_VERSION", "1.0.1"),
     dbPath: env("DB_PATH", path.resolve(here, here.includes(`${path.sep}dist${path.sep}`) ? "../../../data/game.db" : "../data/game.db")),
     runTokenSecret: secret || devSecret,
     adminToken: env("ADMIN_TOKEN", "") || null,

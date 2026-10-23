@@ -29,3 +29,12 @@ describe("API health & header keamanan", () => {
     await app.close();
   });
 });
+
+describe("Prefix path", () => {
+  it("/nyebrang/api/health juga dilayani (mode npm start tanpa Caddy)", async () => {
+    const app = await buildApp({ serveClient: false, db: openDb(":memory:") });
+    const res = await app.inject({ method: "GET", url: "/nyebrang/api/health" });
+    expect(res.statusCode).toBe(200);
+    await app.close();
+  });
+});

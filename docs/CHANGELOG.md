@@ -1,5 +1,11 @@
 # Riwayat perubahan
 
+## 23 Okt 2026: v1.0.1 – README & kemudahan instalasi
+- README ditulis ulang: screenshot, tabel fitur, cara main, diagram arsitektur, instalasi, environment, keamanan, troubleshooting.
+- `npm start` bisa dibuka langsung di `http://127.0.0.1:3100/nyebrang/` (server menerima prefix `PUBLIC_BASE`) dan membaca `.env` otomatis.
+- Request tidak lagi dicatat ke log (log Fastify berisi IP pemain); IP tetap hanya disimpan sebagai hash.
+- `engines.node` >= 22.13 (`node:sqlite`), lisensi MIT.
+
 ## 23 Okt 2026: v1.0.0 – F1–F5 (game lengkap)
 
 **Gameplay (F1–F2)**
