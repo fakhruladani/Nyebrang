@@ -2,9 +2,7 @@
 
 **Nyebrang! adalah game arkade endless menyeberang jalan di browser.** Lompat maju melewati jalan raya, sungai, dan rel kereta sejauh mungkin. Tidak ada save point dan tidak ada garis akhir: satu nyawa, mati berarti mulai lagi dari nol. Lima skor tertinggi dari semua pemain tampil di leaderboard, dan pemiliknya bisa menuliskan namanya.
 
-Tampilan isometrik ala Crossy Road, digambar dari bentuk sederhana tanpa file gambar. Genre terinspirasi Frogger/Varmintz; seluruh karakter, nama, dan asetnya orisinal.
-
-**Main sekarang:** https://72-62-122-35.sslip.io/nyebrang/ (server uji coba)
+Tampilan isometrik ala Crossy Road, digambar dari bentuk sederhana tanpa file gambar. Genre terinspirasi Frogger/Varmintz
 
 ![Bermain di dekat sungai dan rel](docs/screenshots/gameplay.png)
 
