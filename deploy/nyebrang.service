@@ -1,0 +1,46 @@
+[Unit]
+Description=Nyebrang! game server (terpisah dari Catatku)
+After=network.target
+
+[Service]
+Type=simple
+User=nyebrang
+Group=nyebrang
+WorkingDirectory=/opt/nyebrang
+EnvironmentFile=/etc/nyebrang/nyebrang.env
+Environment=NODE_ENV=production
+# node:sqlite masih berlabel eksperimental di Node 22: matikan peringatannya di log
+ExecStart=/usr/bin/node --disable-warning=ExperimentalWarning server/dist/server/src/index.js
+Restart=on-failure
+RestartSec=3
+
+# Batas sumber daya: game tidak boleh merebut jatah Catatku
+MemoryMax=256M
+CPUQuota=50%
+TasksMax=64
+
+# Hardening (MemoryDenyWriteExecute sengaja TIDAK dipakai: merusak JIT V8)
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ReadWritePaths=/var/lib/nyebrang
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

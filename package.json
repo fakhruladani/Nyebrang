@@ -1,0 +1,21 @@
+{
+  "name": "nyebrang",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nyebrang! — game arkade endless menyeberang jalan (isometrik, Phaser 3) dengan leaderboard Top 5",
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "dev:client": "npm run dev -w client",
+    "dev:server": "npm run dev -w server",
+    "build": "npm run build -w client && npm run build -w server",
+    "start": "npm run start -w server",
+    "typecheck": "npm run typecheck -w client && npm run typecheck -w server",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vitest": "^3.2.7",
+    "@types/node": "^22.20.5"
+  },
+  "engines": { "node": ">=22" }
+}

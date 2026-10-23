@@ -1,0 +1,6 @@
+	# --- Nyebrang! (ditambahkan; blok Catatku lainnya tidak diubah) ---
+	redir /nyebrang /nyebrang/ 308
+	handle_path /nyebrang/* {
+		reverse_proxy 127.0.0.1:3100
+	}
+	# --- akhir Nyebrang! ---
